@@ -1,5 +1,7 @@
 package com.noonerware.tries;
 
+import java.util.List;
+
 public class Tries {
 
 	public static void main(String[] args) {
@@ -17,16 +19,25 @@ public class Tries {
 		tree.insert("A");
 		tree.insert("Superman");
 		
-		indicateIfWordIsInTree("Man");
-		indicateIfWordIsInTree("May");
-		indicateIfWordIsInTree("Manny");
-		indicateIfWordIsInTree("Lies");
-		indicateIfWordIsInTree("Lied");
-		indicateIfWordIsInTree("Liesy");
-		indicateIfWordIsInTree("A");
-		indicateIfWordIsInTree("Superman");
+//		indicateIfWordIsInTree("Man");
+//		indicateIfWordIsInTree("May");
+//		indicateIfWordIsInTree("Manny");
+//		indicateIfWordIsInTree("Lies");
+//		indicateIfWordIsInTree("Lied");
+//		indicateIfWordIsInTree("Liesy");
+//		indicateIfWordIsInTree("A");
+//		indicateIfWordIsInTree("Superman");
+		
+		outputAllWords();
 		
 		return;
+	}
+	
+	void outputAllWords() {
+		List<String> foundWords = tree.findAllWords();
+		for (String word : foundWords) {
+			System.out.println(word);
+		}
 	}
 	
 	void indicateIfWordIsInTree(String word) {

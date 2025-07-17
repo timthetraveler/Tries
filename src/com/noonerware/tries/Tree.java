@@ -1,5 +1,9 @@
 package com.noonerware.tries;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
 public class Tree {
 	Node rootNode;
 
@@ -48,5 +52,32 @@ public class Tree {
 		
 		childNode = parentNode.children.get('*');
 		return (null != childNode);
+	}
+	
+	List<String> findAllWords() {
+		return findAllWords(rootNode, "");
+	}
+
+	List<String> findAllWords(Node parentNode, String wordInProgress) {
+		List<String> response = new ArrayList<>();
+
+		String wordPrefix = wordInProgress;
+		
+		for (Map.Entry<Character, Node> entry : parentNode.children.entrySet()) {
+			Character key = entry.getKey();
+			String sKey = String.valueOf(key);
+			if (!sKey.equals("*")) {
+				wordPrefix += sKey;
+				List<String> loopWords = findAllWords(entry.getValue(), wordPrefix);
+				for (String word: loopWords) {
+					response.add(word);
+				}
+				wordPrefix = wordInProgress;
+			}
+			else {
+				response.add(wordInProgress);
+			}
+		}
+		return response;
 	}
 }
