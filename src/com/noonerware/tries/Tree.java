@@ -69,9 +69,7 @@ public class Tree {
 			if (!sKey.equals("*")) {
 				wordPrefix += sKey;
 				List<String> loopWords = findAllWords(entry.getValue(), wordPrefix);
-				for (String word: loopWords) {
-					response.add(word);
-				}
+				loopWords.stream().forEach(response::add);
 				wordPrefix = wordInProgress;
 			}
 			else {

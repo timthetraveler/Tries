@@ -20,13 +20,6 @@ public class Tries {
 		tree.insert("Superman");
 		
 //		indicateIfWordIsInTree("Man");
-//		indicateIfWordIsInTree("May");
-//		indicateIfWordIsInTree("Manny");
-//		indicateIfWordIsInTree("Lies");
-//		indicateIfWordIsInTree("Lied");
-//		indicateIfWordIsInTree("Liesy");
-//		indicateIfWordIsInTree("A");
-//		indicateIfWordIsInTree("Superman");
 		
 		outputAllWords();
 		
@@ -35,9 +28,7 @@ public class Tries {
 	
 	void outputAllWords() {
 		List<String> foundWords = tree.findAllWords();
-		for (String word : foundWords) {
-			System.out.println(word);
-		}
+		foundWords.stream().sorted().forEach(System.out::println);
 	}
 	
 	void indicateIfWordIsInTree(String word) {
